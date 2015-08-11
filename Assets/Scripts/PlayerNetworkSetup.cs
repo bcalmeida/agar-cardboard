@@ -13,8 +13,8 @@ public class PlayerNetworkSetup : NetworkBehaviour {
 			GameObject.Find("CustomCardboardMain").transform.parent = playerHead.transform;
 			playerController.enabled = true;
 			playerEat.enabled = true;
-			Vector3 randPos = new Vector3(Random.Range(-199.0f,199.0f), 0.5f, Random.Range(-199.0f,199.0f));
-			transform.position = randPos;
+			Vector3 randomPos = new Vector3(Random.Range(-199.0f,199.0f), 0, Random.Range(-199.0f,199.0f));
+			transform.position = randomPos;
 		}
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}

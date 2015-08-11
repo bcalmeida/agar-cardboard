@@ -37,6 +37,7 @@ public class PlayerEat : NetworkBehaviour {
 		Vector3 position = new Vector3(0, diameter/2f, 0);
 		Vector3 scale = new Vector3(diameter, diameter, diameter);
 		transform.GetComponent<SphereCollider>().radius = diameter/2;
+		transform.GetComponent<SphereCollider>().center = new Vector3(0, diameter/2, 0);
 		transform.Find("Body").transform.localScale = scale;
 		transform.Find("Body").transform.localPosition = position;
 		transform.Find("Player Head").transform.localPosition = position;
