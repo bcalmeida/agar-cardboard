@@ -16,6 +16,7 @@ public class PlayerNetworkSetup : NetworkBehaviour {
 			Vector3 randPos = new Vector3(Random.Range(-199.0f,199.0f), 0.5f, Random.Range(-199.0f,199.0f));
 			transform.position = randPos;
 		}
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
 
 }
