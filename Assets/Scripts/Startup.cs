@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class startup : MonoBehaviour {
+public class Startup : MonoBehaviour {
 
 	void Start(){
-		NetworkManager.singleton.networkAddress = "192.168.2.182";
+		NetworkManager.singleton.networkAddress = "192.168.2.168";
 		NetworkManager.singleton.StartClient();
 	}
 }
