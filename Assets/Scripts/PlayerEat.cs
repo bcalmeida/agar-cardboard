@@ -10,7 +10,7 @@ public class PlayerEat : NetworkBehaviour {
 		Debug.Log(transform.name + ": mass is now " + updatedMass);
 		mass = updatedMass;
 		UpdateSize();
-		// TODO: UpdateText();
+		// TODO: UpdateText(); - update the text that displays the mass
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -30,9 +30,6 @@ public class PlayerEat : NetworkBehaviour {
 	}
 
 	void UpdateSize() {
-		//Transform bodyTransform = transform.Find("Body").transform;
-		//float oldRadius = bodyTransform.localScale.y;
-		//float newRadius = Mathf.Pow(mass, .5f) + bodyTransform.localScale.y;
 		float diameter = Mathf.Pow (mass, 0.5f);
 		Vector3 position = new Vector3(0, diameter/2f, 0);
 		Vector3 scale = new Vector3(diameter, diameter, diameter);
