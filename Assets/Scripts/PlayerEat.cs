@@ -59,7 +59,7 @@ public class PlayerEat : NetworkBehaviour {
 
 	[Command]
 	void CmdTellServerEatenByOther(GameObject eaten) {
-		Network.CloseConnection (Network.connections [0], true);
+		NetworkManager.singleton.client.Disconnect();
 		Application.LoadLevel("Menu");
 		//Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
 	}
