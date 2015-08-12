@@ -11,9 +11,6 @@ public class PlayerNetworkSetup : NetworkBehaviour {
 
 	void Start () {
 
-		Color randomColor = new Color( Random.value, Random.value, Random.value, 1.0f );
-		myColor.SetColor("_Color",randomColor);
-
 		if (isLocalPlayer) {
 			GameObject.Find("CustomCardboardMain").transform.parent = playerHead.transform;
 			playerController.enabled = true;
