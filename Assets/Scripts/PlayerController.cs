@@ -5,12 +5,6 @@ public class PlayerController : MonoBehaviour {
 
 	public GameObject body;
 	public int speed;
-	public Material color;
-
-	void Start () {
-		Color randomColor = new Color(Random.value, Random.value, Random.value, 1.0f);
-		color.SetColor("_Color",randomColor);
-	}
 
 	void Update () {
 		Vector3 diff = Camera.main.transform.forward;
