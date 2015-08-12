@@ -43,16 +43,6 @@ public class PlayerEat : NetworkBehaviour {
 		transform.Find("Player Head").transform.localPosition = position;
 	}
 
-	void UpdateSizeAndPosition(float x, float z) {
-		float diameter = Mathf.Pow (mass, 0.5f);
-		Vector3 position = new Vector3(x, diameter/2f, z);
-		Vector3 scale = new Vector3(diameter, diameter, diameter);
-		transform.GetComponent<SphereCollider>().radius = diameter/2;
-		transform.Find("Body").transform.localScale = scale;
-		transform.Find("Body").transform.localPosition = position;
-		transform.Find("Player Head").transform.localPosition = position;
-	}
-
 	[Command]
 	void CmdTellServerWhichFoodWasEaten(string foodId) {
 		Debug.Log("Server: " + foodId + " was eaten");
@@ -70,9 +60,8 @@ public class PlayerEat : NetworkBehaviour {
 
 	[Command]
 	void CmdTellServerEatenByOther(GameObject eaten) {
-		Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
-		//Vector2 randPos = new Vector2(Random.Range(-199.0f,199.0f), Random.Range(-199.0f,199.0f));
-		//mass = 1.0f;
-		//UpdateSizeAndPosition (randPos.x, randPos.y);
+		NetworkManager.singleton.client.Disconnect();
+		Application.LoadLevel("Menu");
+		//Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
 	}
 }
