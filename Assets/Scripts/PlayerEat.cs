@@ -20,10 +20,8 @@ public class PlayerEat : NetworkBehaviour {
 			string foodId = other.transform.name;
 			CmdTellServerWhichFoodWasEaten(foodId);
 		} else if (other.gameObject.CompareTag("Blob")) {
-			Debug.Log("Collided with other");
 			float otherMass = other.gameObject.GetComponent<PlayerEat>().mass;
 			if (mass > otherMass + threshold) {
-				Debug.Log("Ate!");
 				CmdTellServerAteOther(other.gameObject);
 			} else if (mass + threshold < otherMass) {
 				Debug.Log("Eaten!");
@@ -60,7 +58,7 @@ public class PlayerEat : NetworkBehaviour {
 
 	[Command]
 	void CmdTellServerEatenByOther(GameObject eaten) {
-		NetworkManager.singleton.client.Disconnect();
+		Network.CloseConnection (Network.connections [0], true);
 		Application.LoadLevel("Menu");
 		//Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
 	}
