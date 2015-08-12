@@ -36,9 +36,8 @@ public class HostUIScript : MonoBehaviour
 		}
 		
 		posY += 140;
-		if (GUI.Button (new Rect(Screen.width/2-100 , Screen.height - 50, 200, 30), "[ Back ]") || Input.GetKeyDown(KeyCode.Escape))
-		{
-			NetworkManager.singleton.ServerChangeScene("title");
+		if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height - 50, 200, 30), "[ Back ]") || Input.GetKeyDown (KeyCode.Escape)) {
+			NetworkManager.singleton.ServerChangeScene ("Menu");
 		}
 	}	
 }
