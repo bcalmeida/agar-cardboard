@@ -50,29 +50,6 @@ public class JoinUIScript : MonoBehaviour
 				}
 				posY += 100;
 			}
-			//if (pageNum > 1) {
-			//	if (GUI.Button (new Rect(Screen.width/2 - 100, posY, 90, 30), " << Prev (" + (pageNum-1) + ")"))
-			//	{
-			//		pageNum -= 1;
-			//		if (pageNum < 1)
-			//		{
-			//			pageNum = 1;
-			//		}
-			//		else
-			//		{
-			//			roomList = null;
-			//			manager.matchMaker.ListMatches(pageNum, 10, "", OnMatchList);
-			//		}
-			//	}
-			//}
-			
-			//if (GUI.Button (new Rect(Screen.width/2 , posY, 90, 30), "Next (" + (pageNum+1) + ") >>"))
-			//{
-			//	pageNum += 1;
-			//	roomList = null;
-			//	manager.matchMaker.ListMatches(pageNum, 10, "", OnMatchList);
-			//}
-			//posY += 40;
 		}
 		
 		if (GUI.Button (new Rect(Screen.width/2-100 , Screen.height - 50, 200, 30), "[ Back ]") || Input.GetKeyDown(KeyCode.Escape))
