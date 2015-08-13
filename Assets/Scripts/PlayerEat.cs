@@ -11,6 +11,7 @@ public class PlayerEat : NetworkBehaviour {
 		Debug.Log(transform.name + ": mass is now " + updatedMass);
 		mass = updatedMass;
 		UpdateSize();
+		transform.GetComponent<PlayerSpeed>().UpdateSpeed(mass);
 		// TODO: UpdateText(); - update the text that displays the mass
 	}
 
