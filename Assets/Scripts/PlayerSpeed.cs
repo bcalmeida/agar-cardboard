@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
@@ -11,11 +12,7 @@ public class PlayerSpeed : NetworkBehaviour {
   }
 
   public void UpdateSpeed(float mass) {
-    if (mass < 200) {
-      speed = (float)(mass * -0.05 + 12.05);
-    } else {
-      speed = 2F;
-    }
+    speed = (float)(5/(1 + Math.Log(mass, 4.5))) + 2;
   }
 
 }
