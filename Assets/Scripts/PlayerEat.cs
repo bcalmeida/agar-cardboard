@@ -11,6 +11,7 @@ public class PlayerEat : NetworkBehaviour {
 		Debug.Log(transform.name + ": mass is now " + updatedMass);
 		mass = updatedMass;
 		UpdateSize();
+		transform.GetComponent<PlayerSpeed>().UpdateSpeed(mass);
 		// TODO: UpdateText(); - update the text that displays the mass
 	}
 
@@ -19,12 +20,10 @@ public class PlayerEat : NetworkBehaviour {
 		if (other.gameObject.CompareTag("Food")) {
 			string foodId = other.transform.name;
 			CmdTellServerWhichFoodWasEaten(foodId);
-			transform.GetComponent<PlayerSpeed>().UpdateSpeed(mass);
 		} else if (other.gameObject.CompareTag("Blob")) {
 			float otherMass = other.gameObject.GetComponent<PlayerEat>().mass;
 			if (mass > otherMass + threshold) {
 				CmdTellServerAteOther(other.gameObject);
-				transform.GetComponent<PlayerSpeed>().UpdateSpeed(mass);
 			} else if (mass + threshold < otherMass) {
 				Debug.Log("Eaten!");
 				CmdTellServerEatenByOther(gameObject);
