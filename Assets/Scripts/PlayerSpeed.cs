@@ -11,7 +11,11 @@ public class PlayerSpeed : NetworkBehaviour {
   }
 
   public void UpdateSpeed(float mass) {
-    speed = (float)(mass * -0.05 + 10.05);
+    if (mass < 200) {
+      speed = (float)(mass * -0.05 + 12.05);
+    } else {
+      speed = 2F;
+    }
   }
 
 }
