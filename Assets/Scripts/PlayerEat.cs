@@ -20,10 +20,8 @@ public class PlayerEat : NetworkBehaviour {
 			string foodId = other.transform.name;
 			CmdTellServerWhichFoodWasEaten(foodId);
 		} else if (other.gameObject.CompareTag("Blob")) {
-			Debug.Log("Collided with other");
 			float otherMass = other.gameObject.GetComponent<PlayerEat>().mass;
 			if (mass > otherMass + threshold) {
-				Debug.Log("Ate!");
 				CmdTellServerAteOther(other.gameObject);
 			} else if (mass + threshold < otherMass) {
 				Debug.Log("Eaten!");
@@ -70,8 +68,12 @@ public class PlayerEat : NetworkBehaviour {
 
 	[Command]
 	void CmdTellServerEatenByOther(GameObject eaten) {
-		NetworkManager.singleton.client.Disconnect();
-		Application.LoadLevel("Menu");
+		mass = 1;
+		UpdateSize();
+		Vector3 randpos = new Vector3 (Random.Range (-199.0f, 199.0f), 0, Random.Range (-199.0f, 199.0f));
+		eaten.transform.Find("Body").transform.localPosition = randpos;
+		eaten.transform.Find("Player Head").transform.localPosition = randpos;
+		print (eaten.transform.localPosition);
 		//Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
 	}
 }
