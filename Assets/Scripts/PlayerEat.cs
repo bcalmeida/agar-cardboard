@@ -63,7 +63,6 @@ public class PlayerEat : NetworkBehaviour {
 		eaten.transform.Find("Body").transform.localPosition = randpos;
 		eaten.transform.Find("Player Head").transform.localPosition = randpos;
 		eaten.transform.position = randpos;
-		//eaten.GetComponent<NetworkTransform>().SetDirtyBit(1);
 		mass = 1;
 		eaten.transform.Find("Body").transform.localScale = new Vector3(1, 1, 1);
 	}
