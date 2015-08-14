@@ -30,7 +30,7 @@ public class FoodSpawner : NetworkBehaviour {
 	}
 
 	Vector3 RandomPosition() {
-		float range = 199f;
+		float range = 149f;
 		float randX = Random.Range(-range, range);
 		float randZ = Random.Range(-range, range);
 		return new Vector3(randX, 0.5f, randZ);

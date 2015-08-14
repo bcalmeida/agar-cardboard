@@ -59,7 +59,7 @@ public class PlayerEat : NetworkBehaviour {
 
 	[Command]
 	void CmdTellServerEatenByOther(GameObject eaten) {
-		Vector3 randpos = new Vector3 (Random.Range (-199.0f, 199.0f), 0, Random.Range (-199.0f, 199.0f));
+		Vector3 randpos = new Vector3 (Random.Range (-149.0f, 149.0f), 0, Random.Range (-149.0f, 149.0f));
 		eaten.transform.position = randpos;
 		GetComponent<PlayerSyncPosition>().CmdProvidePositionToServer (randpos);
 		mass = 1;
