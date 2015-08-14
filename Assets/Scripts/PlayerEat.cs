@@ -63,6 +63,6 @@ public class PlayerEat : NetworkBehaviour {
 		eaten.transform.position = randpos;
 		GetComponent<PlayerSyncPosition>().CmdProvidePositionToServer (randpos);
 		mass = 1;
-		eaten.transform.Find("Body").transform.localScale = new Vector3(1, 1, 1);
+		UpdateSize();
 	}
 }
