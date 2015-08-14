@@ -4,6 +4,10 @@ using System.Collections;
 
 public class TitleUI : MonoBehaviour {
 
+	void Awake() {
+		PlayerPrefs.SetString( "CloudNetworkingId", "207901" );
+	}
+
 	void OnGUI()
 	{
 		int posY = Screen.height/2 - 100;

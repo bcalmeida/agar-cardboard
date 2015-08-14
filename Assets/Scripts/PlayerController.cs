@@ -4,10 +4,11 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public GameObject body;
-	public int speed;
+	public PlayerSpeed playerSpeed;
 
 	void Update () {
 		Vector3 diff = Camera.main.transform.forward;
+		float speed = playerSpeed.speed;
 		diff.y = 0;
 		Vector3 distance = diff.normalized * speed * Time.deltaTime;
 		Vector3 nextpos = transform.position + distance;

@@ -11,6 +11,7 @@ public class PlayerEat : NetworkBehaviour {
 		Debug.Log(transform.name + ": mass is now " + updatedMass);
 		mass = updatedMass;
 		UpdateSize();
+		transform.GetComponent<PlayerSpeed>().UpdateSpeed(mass);
 		// TODO: UpdateText(); - update the text that displays the mass
 	}
 
@@ -20,10 +21,8 @@ public class PlayerEat : NetworkBehaviour {
 			string foodId = other.transform.name;
 			CmdTellServerWhichFoodWasEaten(foodId);
 		} else if (other.gameObject.CompareTag("Blob")) {
-			Debug.Log("Collided with other");
 			float otherMass = other.gameObject.GetComponent<PlayerEat>().mass;
 			if (mass > otherMass + threshold) {
-				Debug.Log("Ate!");
 				CmdTellServerAteOther(other.gameObject);
 			} else if (mass + threshold < otherMass) {
 				Debug.Log("Eaten!");
@@ -38,16 +37,6 @@ public class PlayerEat : NetworkBehaviour {
 		Vector3 scale = new Vector3(diameter, diameter, diameter);
 		transform.GetComponent<SphereCollider>().radius = diameter/2;
 		transform.GetComponent<SphereCollider>().center = new Vector3(0, diameter/2, 0);
-		transform.Find("Body").transform.localScale = scale;
-		transform.Find("Body").transform.localPosition = position;
-		transform.Find("Player Head").transform.localPosition = position;
-	}
-
-	void UpdateSizeAndPosition(float x, float z) {
-		float diameter = Mathf.Pow (mass, 0.5f);
-		Vector3 position = new Vector3(x, diameter/2f, z);
-		Vector3 scale = new Vector3(diameter, diameter, diameter);
-		transform.GetComponent<SphereCollider>().radius = diameter/2;
 		transform.Find("Body").transform.localScale = scale;
 		transform.Find("Body").transform.localPosition = position;
 		transform.Find("Player Head").transform.localPosition = position;
@@ -70,9 +59,8 @@ public class PlayerEat : NetworkBehaviour {
 
 	[Command]
 	void CmdTellServerEatenByOther(GameObject eaten) {
-		Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
-		//Vector2 randPos = new Vector2(Random.Range(-199.0f,199.0f), Random.Range(-199.0f,199.0f));
-		//mass = 1.0f;
-		//UpdateSizeAndPosition (randPos.x, randPos.y);
+		Network.CloseConnection (Network.connections [0], true);
+		Application.LoadLevel("Menu");
+		//Destroy(eaten); // TODO: Handle it better. Go to menu/respawn.
 	}
 }
