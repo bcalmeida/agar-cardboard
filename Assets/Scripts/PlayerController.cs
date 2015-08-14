@@ -16,17 +16,17 @@ public class PlayerController : MonoBehaviour {
 		float radius = size.x/2f;
 		float wallThickness = 0.5f;
 		float distanceToWall = radius + wallThickness/2f;
-		if (nextpos.x > 200.0f - distanceToWall) {
-			nextpos.x = 200.0f - distanceToWall;
+		if (nextpos.x > 150.0f - distanceToWall) {
+			nextpos.x = 150.0f - distanceToWall;
 		}
-		if (nextpos.x < -200.0f + distanceToWall) {
-			nextpos.x = -200.0f + distanceToWall;
+		if (nextpos.x < -150.0f + distanceToWall) {
+			nextpos.x = -150.0f + distanceToWall;
 		}
-		if (nextpos.z > 200.0f - distanceToWall) {
-			nextpos.z = 200.0f - distanceToWall;
+		if (nextpos.z > 150.0f - distanceToWall) {
+			nextpos.z = 150.0f - distanceToWall;
 		}
-		if (nextpos.z < -200.0f + distanceToWall){
-			nextpos.z = -200.0f + distanceToWall;
+		if (nextpos.z < -150.0f + distanceToWall){
+			nextpos.z = -150.0f + distanceToWall;
 		}
 		transform.position = nextpos;
 		body.transform.rotation = Camera.main.transform.rotation;
